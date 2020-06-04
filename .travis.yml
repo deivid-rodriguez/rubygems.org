@@ -18,7 +18,6 @@ addons:
   chrome: stable
 
 services:
-  - elasticsearch
   - memcached
   - docker
 
