@@ -424,8 +424,8 @@ DEPENDENCIES
   delayed_job
   delayed_job_active_record
   elasticsearch-dsl (~> 0.1.2)
-  elasticsearch-model (~> 5.0.0)
-  elasticsearch-rails (~> 5.0.0)
+  elasticsearch-model (~> 5.0)
+  elasticsearch-rails (~> 5.0)
   factory_bot_rails
   faraday_middleware-aws-sigv4 (~> 0.2.4)
   gravtastic
