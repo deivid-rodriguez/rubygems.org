@@ -12,10 +12,7 @@ rvm:
 
 addons:
   apt:
-    sources:
-      - elasticsearch-6.x
     packages:
-      - elasticsearch
       - openjdk-8-jre-headless
   postgresql: "9.6"
   chrome: stable
@@ -35,6 +32,7 @@ before_install:
   - sh -c "if [ '$RUBYGEMS_VERSION' != 'latest' ]; then gem update --system $RUBYGEMS_VERSION; fi"
   - gem --version
   - script/install_toxiproxy.sh
+  - script/install_elasticsearch.sh
 
 before_script:
   - cp config/database.yml.example config/database.yml
