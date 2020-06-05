@@ -115,7 +115,7 @@ class GemInfo
 
     dep_req_agg = "string_agg(dependencies.requirements, '@' ORDER BY rubygems_dependencies.name, dependencies.id)"
 
-    dep_name_agg = "string_agg(coalesce(rubygems_dependencies.name, '0'), ',' ORDER BY rubygems_dependencies.name) AS dep_name"
+    dep_name_agg = "string_agg(coalesce(rubygems_dependencies.name, '0'), ',' ORDER BY rubygems_dependencies.name)"
 
     Rubygem.joins("LEFT JOIN versions ON versions.rubygem_id = rubygems.id
         LEFT JOIN dependencies ON dependencies.version_id = versions.id
@@ -124,7 +124,7 @@ class GemInfo
           AND dependencies.scope = 'runtime'")
       .where("rubygems.name = ? AND indexed = true", @rubygem_name)
       .group(Arel.sql(group_by_columns))
-      .order(Arel.sql("versions.created_at, number, platform, dep_name"))
+      .order(Arel.sql("versions.created_at, number, platform"))
       .pluck(Arel.sql("#{group_by_columns}, #{dep_req_agg}, #{dep_name_agg}"))
   end
 end
